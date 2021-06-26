@@ -1,0 +1,37 @@
+<!--embedded js inside HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    const ROOM_ID = "<%= roomId %>"
+  </script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <title>Microsoft teams Clone</title>
+</head>
+<body>
+  <div id="video-grid"></div>
+   
+  <button type="button" name="btn" class="microphone"> 
+    <span class="material-icons-round mic-btn">mic</span> 
+  </button>
+
+  <button type="button" name="btn" class="camera"> 
+    <span class="material-icons-round cam-btn">videocam</span> 
+  </button>
+
+  <form method="post" style="display: inline;">
+    <button type="submit" name="endBtn" class="endCall" > 
+      <span class="material-icons-round end-btn">call_end</span>
+    </button>
+  </form>
+
+  <script src="/script.js"></script>
+</body>
+</html>
