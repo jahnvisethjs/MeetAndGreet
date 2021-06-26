@@ -6,6 +6,8 @@ const other_peer = new Peer(undefined, {
   host: "msteam-clone.herokuapp.com",
   secure: true,
   port: '443',
+  key:'peerjs',
+  debug: 1
 });
 
 const myVideo = document.createElement('video')
