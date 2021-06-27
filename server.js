@@ -21,12 +21,13 @@ app.get("/:rooms", function(req,res){
 //whenever we join a room and have a user.. we set up this join room
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => { 
-      //console.log(roomId, userId);
-      socket.join(roomId)
-      socket.broadcast.to(roomId).emit('user-connected', userId)
+      console.log("Details of new user connected " + roomId, userId);
+      socket.join(roomId);
+      socket.broadcast.to(roomId).emit('user-connected', userId);
 
       socket.on('disconnect', () => {
-        socket.broadcast.to(roomId).emit('user-disconnected', userId)
+        console.log("User details who disconnected " + roomId, userId);
+        socket.broadcast.to(roomId).emit('user-disconnected', userId);
       })
     })
 })

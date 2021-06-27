@@ -13,7 +13,7 @@ const other_peer = new Peer(undefined, {
 const myVideo = document.createElement('video')
 myVideo.muted = true; //video playback is muted for us.. we don't want to listen to ourselves
 
-let running_stream;
+let running_stream, conn;
 const allPeers = {}
 navigator.mediaDevices.getUserMedia({
   video: true,
@@ -30,9 +30,14 @@ navigator.mediaDevices.getUserMedia({
     call.on('stream', userVideoStream => {
       addVideoStream(video, userVideoStream)
     })
+
+    // conn.on('close', function (){
+    //   showCallContent();
+    // })
   })
 
   socket.on('user-connected', userId => {
+    console.log("User connected "+userId);
     setTimeout(() => {
       connectToNewUser(userId, stream)
     }, 1000)
@@ -40,9 +45,13 @@ navigator.mediaDevices.getUserMedia({
 })
 
 socket.on('user-disconnected', userId => {
-  //console.log("User disconnected "+ userId)
+  console.log("User disconnected "+ userId);
   if (allPeers[userId]) allPeers[userId].close() //when we have a user who leaves, close the video
 })
+
+other_peer.on('connection', function(connection){
+  conn = connection;
+});
 
 other_peer.on('open', Uid => {
   socket.emit('join-room', ROOM_ID, Uid)
@@ -55,6 +64,7 @@ function connectToNewUser(userId, stream) {
     addVideoStream(video, userVideoStream) //geting user video at our end
   });
   call.on('close', () => { //this is to remove video when person leaves
+    console.log("video removed");
     video.remove();
   });
 
@@ -124,6 +134,7 @@ document.querySelector(".camera").onclick= () =>{
 //end meeting
 document.querySelector(".endCall").onclick=()=>{
   endVideo(myVideo, running_stream);
+  conn.close();
   socket.disconnect();
   document.querySelector(".endCall").innerHTML = html;
 }
