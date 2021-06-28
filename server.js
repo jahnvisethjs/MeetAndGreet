@@ -1,4 +1,5 @@
 //website link: https://tranquil-ridge-38626.herokuapp.com/
+//path for cd: 'C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone'
 const express = require("express");
 const app=express();
 const server = require("http").Server(app);
@@ -17,6 +18,11 @@ app.get("/", function(req,res){
 app.get("/:rooms", function(req,res){
     res.render('rooms', { roomId: req.params.rooms});
 });
+
+app.post("/EndingPage", function(req,res){
+  res.sendFile(__dirname+"/EndingPage.html")
+});
+
 
 //whenever we join a room and have a user.. we set up this join room
 io.on('connection', socket => {

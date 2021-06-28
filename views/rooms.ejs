@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script>
     const ROOM_ID = "<%= roomId %>"
+    const room_num= "https://tranquil-ridge-38626.herokuapp.com/"+ROOM_ID;
   </script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <link href="/style.css" rel="stylesheet">
@@ -26,11 +27,12 @@
     <span class="material-icons-round cam-btn">videocam</span> 
   </button>
 
-  <form method="post" style="display: inline;">
+  <form method="post" style="display: inline;" action="/EndingPage">
     <button type="submit" name="endBtn" class="endCall" > 
       <span class="material-icons-round end-btn">call_end</span>
     </button>
   </form>
+
 
   <script src="/script.js"></script>
 </body>
