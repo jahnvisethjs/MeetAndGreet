@@ -10,15 +10,16 @@ const other_peer = new Peer(undefined, {
   debug: 1
 });
 
-const myVideo = document.createElement('video')
+const myVideo = document.createElement("video")
 myVideo.muted = true; //video playback is muted for us.. we don't want to listen to ourselves
 
 let running_stream, conn;
-const allPeers = {}
+let allPeers = []
+
 navigator.mediaDevices.getUserMedia({
-  video: true,
-  audio: true
-}).then((stream )=> {
+  video: true, //this element is getting video of user
+  audio: true //audio of user
+}).then((stream) => {
   running_stream=stream;
   addVideoStream(myVideo, stream)
 
@@ -69,9 +70,9 @@ function connectToNewUser(userId, stream) {
   });
 
   allPeers[userId] = call;
-  resizeVideo();
 };
 
+//adding video on screen
 function addVideoStream(video, stream) {
   video.srcObject = stream
   video.addEventListener('loadedmetadata', () => {
@@ -144,27 +145,16 @@ const endVideo=(userVideo,userStream)=>{
   video.remove();
 }
 
+//share button functionality
+document.querySelector(".shareBtn").onclick=()=>{
+  alert("Your room link is:  "+ window.location.href)
+}
 
-//share button function
-// document.querySelector(".shareBtn").onclick=()=>{
-//   let room_num= "https://tranquil-ridge-38626.herokuapp.com/"+ROOM_ID;
-//   document.write(room_num);
-// }
-// function showDiv() {
-//   document.querySelector(".invitation").style.display = "block";
-// }<div class="card invitation" style="width: 18rem; display:none;">
-{/* <div class="card-body">
-<h5 class="card-title">Share this link to invite others: </h5>
-</div>
-</div>
-<input type="button" name="linkShow" value="Show Div" onclick="showDiv()" /> */}
+//adjusting videos
+const resize=(video)=>{
+  video.className="remote-video";
+  var people_present=document.querySelectorAll('.remote-video').length;;
+  console.length(people_present);
+}
+resize();
 
-//adjusting videos when user joins
-// function resizeVideo()
-// {
-//   const people_joined= allPeers.length;
-//   let wid=screen.width;
-//   for(let i=0;i<people_joined;i++){
-//     document.querySelector(".video").size= (wid/people_joined);
-//   }
-// }
