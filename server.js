@@ -1,5 +1,5 @@
 //website link: https://tranquil-ridge-38626.herokuapp.com/
-
+//path for cd: 'C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone'
 const express = require("express");
 const app=express();
 const server = require("http").Server(app);
@@ -11,37 +11,45 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs'); //to run our ejs file
 
 
-app.get("/:rooms", function(req,res){
+app.get("/", function(req,res){
     res.redirect(`/${uuidV4()}`); //this route is main route, here we will get uuid by function
     //this function will give us a dynamic url 
 });
-
-//Homepage
-app.get("/", function(req,res){
+app.get("/:rooms", function(req,res){
     res.render('rooms', { roomId: req.params.rooms});
-    //res.redirect("/HomePage");
 });
 
 app.post("/EndingPage", function(req,res){
   res.sendFile(__dirname+"/EndingPage.html")
 });
 
-// app.post("/HomePage", function(req,res){
-//   res.render('rooms', { roomId: req.params.rooms});
-// });
-
+const allUsers={}
 //whenever we join a room and have a user.. we set up this join room
 io.on('connection', socket => {
+
     socket.on('join-room', (roomId, userId) => { 
       console.log("Details of new user connected " + roomId, userId);
       socket.join(roomId);
       socket.broadcast.to(roomId).emit('user-connected', userId);
 
+      //message 
+      socket.on("new-user", name=>{
+        allUsers[socket.id]=name;
+        socket.broadcast.emit("newuser-connected", name);
+        console.log(allUsers[socket.id]);
+      })
+      socket.on("send-chat-message", message=>{
+        socket.broadcast.emit("chat-msg", {message: message, name: allUsers[socket.id]});
+      });
+
       socket.on('disconnect', () => {
         console.log("User details who disconnected " + roomId, userId);
         socket.broadcast.to(roomId).emit('user-disconnected', userId);
+        delete allUsers[socket.id];
       })
+      
     })
+
 })
 server.listen(process.env.PORT || 3000, function(req, res){
     console.log("Server is listening on port 3000...");

@@ -12,8 +12,8 @@ video {
 button{
   background-color: "#07e3f2";
   border: none;
-  height: 4em;
-  width: 4em;
+  height: 3.5em;
+  width: 3.5em;
   border-radius: 50%; 
   margin: 1em;
   font-size: 0.8em;
@@ -28,4 +28,16 @@ button{
 }
 .endCall{
   background-color: #e4280f;
+}
+
+.message-container{
+  position: absolute;
+  top: 5%;
+  left: 68%;
+}
+
+.link-container{
+  position: absolute;
+  top: 5%;
+  left: 68%;
 }

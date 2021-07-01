@@ -38,11 +38,27 @@ navigator.mediaDevices.getUserMedia({
   })
 
   socket.on('user-connected', userId => {
-    console.log("User connected "+userId);
+    console.log("User connected "+ userId);
     setTimeout(() => {
       connectToNewUser(userId, stream)
     }, 1000)
   })
+
+  //for chat
+  socket.emit("new-user", userName);
+
+  socket.on("chat-msg", data=>{
+    console.log(`${data.name}`)
+    appendMessage(`${data.userName}: ${data.message}`);
+  });
+
+  socket.on("newuser-connected", name=>{
+    appendMessage(`${name} connected`);
+  });
+  socket.on('newuser-disconnected', name => {
+    appendMessage(`${name} disconnected`);
+  })
+
 })
 
 socket.on('user-disconnected', userId => {
@@ -57,6 +73,7 @@ other_peer.on('connection', function(connection){
 other_peer.on('open', Uid => {
   socket.emit('join-room', ROOM_ID, Uid)
 });
+
 
 function connectToNewUser(userId, stream) {
   const call = other_peer.call(userId, stream)//calling user and sending our video and audio stream
@@ -146,15 +163,49 @@ const endVideo=(userVideo,userStream)=>{
 }
 
 //share button functionality
-document.querySelector(".shareBtn").onclick=()=>{
-  alert("Your room link is:  "+ window.location.href)
+document.querySelector(".Sharing").onclick=()=>{
+  document.getElementById("contain-link").value= window.location.href
+  document.querySelector(".link-container").style.display = "block";
+}
+document.querySelector(".closeBtn").onclick = () => {
+  document.querySelector(".link-container").style.display = "none";
 }
 
 //adjusting videos
-const resize=(video)=>{
-  video.className="remote-video";
-  var people_present=document.querySelectorAll('.remote-video').length;;
-  console.length(people_present);
-}
-resize();
+// const resize=(video)=>{
+//   video.className="remote-video";
+//   var people_present=document.querySelectorAll('.remote-video').length;;
+//   console.length(people_present);
+// }
+// resize();
 
+
+//chatting
+document.querySelector(".chatBox").onclick = () => {
+  document.querySelector(".message-container").style.display = "block";
+}
+document.querySelector(".close").onclick = () => {
+  document.querySelector(".message-container").style.display = "none";
+}
+
+const messageContainer=document.querySelector(".message-container");
+const messageForm=document.getElementById("send-container");
+const inputMessage=document.getElementById("msg-input");
+
+const userName = prompt("Please enter your name: ");
+appendMessage("You joined");
+
+messageForm.addEventListener("submit", e=>{
+  e.preventDefault(); //to stop sending msgs and save conversation till there
+  const message = inputMessage.value;
+  appendMessage(`You: ${message}`);
+  socket.emit("send-chat-message", message); //send info from client to server
+  inputMessage.value="";
+})
+
+function appendMessage(msg){
+  const msgEle= document.createElement('div');
+  msgEle.innerText=msg;
+  messageContainer.append(msgEle);
+
+}

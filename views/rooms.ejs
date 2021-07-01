@@ -19,24 +19,61 @@
 <body>
   <div id="video-grid"></div>
    
+  <!--mic button-->
   <button type="button" name="btn" class="microphone"> 
     <span class="material-icons-round mic-btn">mic</span> 
   </button>
 
+  <!--camera button-->
   <button type="button" name="btn" class="camera"> 
     <span class="material-icons-round cam-btn">videocam</span> 
   </button>
 
+  <!--end call button-->
   <form method="post" style="display: inline;" action="/EndingPage">
     <button type="submit" name="endBtn" class="endCall" > 
       <span class="material-icons-round end-btn">call_end</span>
     </button>
   </form>
+  <!--shareLink button-->
+  <div class="Sharing" style="display: inline;">
+    <button type="submit" name="share" class="shareBtn" style="background-color: #22f2ef;">
+      <span class="material-icons-round share-link">share</span>
+    </button>
+  </div>
 
-  <button type="button" name="share" class="shareBtn" style="background-color: #22f2ef;">
-    <span class="material-icons-round share-link">share</span>
-  </button>
+  <div class="card link-container" style="width: 20rem; display: none; background-color: rgb(18, 209, 243);">
+    <div class="card-header" style="background-color: rgb(18, 209, 243);">
+      <h3 class="card-title" style="display: inline; color: black;">Share link: </h3>
+      <span class="material-icons-round closeBtn" style="cursor: pointer; float: right; color: black;">close</span>
+    </div>
+    <input id="contain-link" type="text" disabled> 
+  </div>  
+
+  <!--Chat functionality-->
+  <div class="chatBox" style="display: inline;">
+    <button type="submit" name="msg" class="chatting" style="background-color: #22f2ef;">
+      <span class="material-icons-round">chat</span>
+    </button>
+</div>
+
+<div class="card message-container" style="width: 20rem; display: none; background-color: rgb(18, 209, 243);">
+  <div class="card-header" style="background-color: rgb(18, 209, 243);">
+    <h3 class="card-title" style="display: inline; color: black;">Chat</h3>
+    <span class="material-icons-round close" style="cursor: pointer; float: right; color: black;">close</span>
+  </div>
+  <form id="send-container">
+    <input type="text" id="msg-input" placeholder="Send Message...">
+    <button type="submit" id="send-btn">
+        <span class="material-icons-round">send</span>
+    </button>
+</form>
+</div>  
+
+  <!--Users present in room-->
   
+
+
   <script src="/script.js"></script>
 </body>
 </html>
