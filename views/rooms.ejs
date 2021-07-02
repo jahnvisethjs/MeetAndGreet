@@ -17,7 +17,9 @@
   <title>Microsoft teams Clone</title>
 </head>
 <body>
-  <div id="video-grid"></div>
+  <div class="main__videos">
+    <div id="video-grid"></div>
+  </div>
    
   <!--mic button-->
   <button type="button" name="btn" class="microphone"> 
@@ -55,7 +57,7 @@
     <button type="submit" name="msg" class="chatting" style="background-color: #22f2ef;">
       <span class="material-icons-round">chat</span>
     </button>
-</div>
+  </div>
 
 <div class="card message-container" style="width: 20rem; display: none; background-color: rgb(18, 209, 243);">
   <div class="card-header" style="background-color: rgb(18, 209, 243);">
@@ -70,9 +72,20 @@
 </form>
 </div>  
 
-  <!--Users present in room-->
-  
+  <!--live captioning-->
+  <!-- <audio></audio>
+  <div class="caption" style="display: inline;">
+    <button type="submit" name="cap" class="live_captioning" style="background-color: #22f2ef;">
+      <span class="material-icons-round cptnBtn">subtitles_off</span>
+    </button>
+  </div>
 
+  <div class="card caption-container" style="width: 20rem; float:bottom; display: none; background-color: black">
+    <div class="card-header" style="background-color: black">
+      <h5 class="card-title" style="display: inline; color: white;">Live Captions</h5>
+      <span class="material-icons-round closeCaption" style="cursor: pointer; float: right; color: white;">close</span>
+    </div>
+  </div> -->
 
   <script src="/script.js"></script>
 </body>

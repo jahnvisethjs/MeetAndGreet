@@ -5,6 +5,7 @@ const video_grid = document.getElementById('video-grid')
 const other_peer = new Peer(undefined, {
   host: "msteam-clone.herokuapp.com",
   secure: true,
+  //host:"/",
   port: '443',
   key:'peerjs',
   debug: 1
@@ -15,6 +16,11 @@ myVideo.muted = true; //video playback is muted for us.. we don't want to listen
 
 let running_stream, conn;
 let allPeers = []
+let userName;
+
+do{
+  userName = prompt("Please enter your name: ");
+}while(userName == null || userName == "" );
 
 navigator.mediaDevices.getUserMedia({
   video: true, //this element is getting video of user
@@ -48,13 +54,13 @@ navigator.mediaDevices.getUserMedia({
   socket.emit("new-user", userName);
 
   socket.on("chat-msg", data=>{
-    console.log(`${data.name}`)
-    appendMessage(`${data.userName}: ${data.message}`);
+    //console.log(`${data.name}`)
+    appendMessage(`${data.name}: ${data.message}`);
   });
 
-  socket.on("newuser-connected", name=>{
-    appendMessage(`${name} connected`);
-  });
+  // socket.on("newuser-connected", name=>{
+  //   appendMessage(`${name} connected`);
+  // });
   socket.on('newuser-disconnected', name => {
     appendMessage(`${name} disconnected`);
   })
@@ -172,10 +178,10 @@ document.querySelector(".closeBtn").onclick = () => {
 }
 
 //adjusting videos
-// const resize=(video)=>{
+// let resize=(video)=>{
 //   video.className="remote-video";
 //   var people_present=document.querySelectorAll('.remote-video').length;;
-//   console.length(people_present);
+//   console.log(people_present);
 // }
 // resize();
 
@@ -192,8 +198,9 @@ const messageContainer=document.querySelector(".message-container");
 const messageForm=document.getElementById("send-container");
 const inputMessage=document.getElementById("msg-input");
 
-const userName = prompt("Please enter your name: ");
+
 appendMessage("You joined");
+socket.emit("new-user", userName);
 
 messageForm.addEventListener("submit", e=>{
   e.preventDefault(); //to stop sending msgs and save conversation till there
@@ -207,5 +214,15 @@ function appendMessage(msg){
   const msgEle= document.createElement('div');
   msgEle.innerText=msg;
   messageContainer.append(msgEle);
-
 }
+
+//live captioning functionality
+// document.querySelector(".caption").onclick = () => {
+//   document.querySelector(".caption-container").style.display = "block";
+//   document.querySelector(".cptnBtn").innerHTML="subtitles";
+// }
+// document.querySelector(".closeCaption").onclick = () => {
+//   document.querySelector(".caption-container").style.display = "none";
+//   document.querySelector(".cptnBtn").innerHTML="subtitles_off";
+// }
+

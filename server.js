@@ -27,17 +27,18 @@ const allUsers={}
 //whenever we join a room and have a user.. we set up this join room
 io.on('connection', socket => {
 
+    socket.on("new-user", name=>{
+      allUsers[socket.id]=name;
+      //socket.broadcast.emit("newuser-connected", name);
+      console.log(allUsers[socket.id]);
+    })
+
     socket.on('join-room', (roomId, userId) => { 
       console.log("Details of new user connected " + roomId, userId);
       socket.join(roomId);
       socket.broadcast.to(roomId).emit('user-connected', userId);
 
       //message 
-      socket.on("new-user", name=>{
-        allUsers[socket.id]=name;
-        socket.broadcast.emit("newuser-connected", name);
-        console.log(allUsers[socket.id]);
-      })
       socket.on("send-chat-message", message=>{
         socket.broadcast.emit("chat-msg", {message: message, name: allUsers[socket.id]});
       });
