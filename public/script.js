@@ -15,7 +15,7 @@ const myVideo = document.createElement("video")
 myVideo.muted = true; //video playback is muted for us.. we don't want to listen to ourselves
 
 let running_stream, conn;
-let allPeers = []
+let allPeers = {}
 let userName;
 
 do{
@@ -82,6 +82,7 @@ other_peer.on('open', Uid => {
 
 
 function connectToNewUser(userId, stream) {
+  //allPeers[userId]=userId;
   const call = other_peer.call(userId, stream)//calling user and sending our video and audio stream
   const video = document.createElement('video')
   call.on('stream', userVideoStream => { //userVideoStream is other person's video
@@ -178,12 +179,7 @@ document.querySelector(".closeBtn").onclick = () => {
 }
 
 //adjusting videos
-// let resize=(video)=>{
-//   video.className="remote-video";
-//   var people_present=document.querySelectorAll('.remote-video').length;;
-//   console.log(people_present);
-// }
-// resize();
+// function resize()
 
 
 //chatting
@@ -225,4 +221,3 @@ function appendMessage(msg){
 //   document.querySelector(".caption-container").style.display = "none";
 //   document.querySelector(".cptnBtn").innerHTML="subtitles_off";
 // }
-

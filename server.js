@@ -10,17 +10,25 @@ const { v4: uuidV4 } = require('uuid'); //we need a unique id for evry specific 
 app.use(express.static("public"));
 app.set('view engine', 'ejs'); //to run our ejs file
 
-
-app.get("/", function(req,res){
-    res.redirect(`/${uuidV4()}`); //this route is main route, here we will get uuid by function
-    //this function will give us a dynamic url 
+app.get("/", (req,res)=>{
+  res.render('HomePage');
 });
+
+app.post("/newMeeting", (req,res)=>{
+    let room_id=uuidV4(); //to get dynamic url everytime
+    res.redirect("/" + room_id);
+})
+
 app.get("/:rooms", function(req,res){
     res.render('rooms', { roomId: req.params.rooms});
 });
 
 app.post("/EndingPage", function(req,res){
   res.sendFile(__dirname+"/EndingPage.html")
+});
+
+app.post("/MeetingEnded", (req,res)=>{
+    res.render("HomePage");
 });
 
 const allUsers={}
