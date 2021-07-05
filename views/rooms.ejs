@@ -17,10 +17,12 @@
   <title>Microsoft teams Clone</title>
 </head>
 <body style="background-color: black;">
-  <div class="main__videos">
+
+  <div class="video_area">
     <div id="video-grid"></div>
   </div>
-   
+
+
   <!--mic button-->
   <button type="button" name="btn" class="microphone"> 
     <span class="material-icons-round mic-btn">mic</span> 
@@ -49,7 +51,8 @@
       <h3 class="card-title" style="display: inline; color: black;">Share link: </h3>
       <span class="material-icons-round closeBtn" style="cursor: pointer; float: right; color: black;">close</span>
     </div>
-    <input id="contain-link" type="text" disabled> 
+    <input id="contain-link" type="text" disabled autocomplete="off"> 
+    <input id="idroom" type="text" disabled autocomplete="off">
   </div>  
 
   <!--Chat functionality-->
@@ -65,7 +68,7 @@
     <span class="material-icons-round close" style="cursor: pointer; float: right; color: black;">close</span>
   </div>
   <form id="send-container">
-    <input type="text" id="msg-input" placeholder="Send Message...">
+    <input type="text" id="msg-input" placeholder="Send Message..." autocomplete="off">
     <button type="submit" id="send-btn">
         <span class="material-icons-round">send</span>
     </button>

@@ -17,15 +17,19 @@ myVideo.muted = true; //video playback is muted for us.. we don't want to listen
 let running_stream, conn;
 let allPeers = {}
 let userName;
+let people_in_room=[];
+let i=0;
 
 do{
   userName = prompt("Please enter your name: ");
 }while(userName == null || userName == "" );
 
+
 navigator.mediaDevices.getUserMedia({
   video: true, //this element is getting video of user
   audio: true //audio of user
 }).then((stream) => {
+  
   running_stream=stream;
   addVideoStream(myVideo, stream)
 
@@ -58,9 +62,6 @@ navigator.mediaDevices.getUserMedia({
     appendMessage(`${data.name}: ${data.message}`);
   });
 
-  // socket.on("newuser-connected", name=>{
-  //   appendMessage(`${name} connected`);
-  // });
   socket.on('newuser-disconnected', name => {
     appendMessage(`${name} disconnected`);
   })
@@ -82,7 +83,8 @@ other_peer.on('open', Uid => {
 
 
 function connectToNewUser(userId, stream) {
-  //allPeers[userId]=userId;
+  people_in_room[i]=userId;
+  i=i+1;
   const call = other_peer.call(userId, stream)//calling user and sending our video and audio stream
   const video = document.createElement('video')
   call.on('stream', userVideoStream => { //userVideoStream is other person's video
@@ -103,10 +105,11 @@ function addVideoStream(video, stream) {
     video.play()
   })
   video_grid.append(video)
+  //resize();
 }
 
 //mic button function
-document.querySelector(".microphone").onclick= () =>{ //.microphoene is main <button>, mic-btn in<span>
+document.querySelector(".microphone").onclick= () =>{
   let audioAt=running_stream.getAudioTracks()[0];
   let microphone_class=document.querySelector(".microphone");
   let mic_btn_select=document.querySelector(".mic-btn");
@@ -171,16 +174,13 @@ const endVideo=(userVideo,userStream)=>{
 
 //share button functionality
 document.querySelector(".Sharing").onclick=()=>{
-  document.getElementById("contain-link").value= window.location.href
+  document.getElementById("contain-link").value= window.location.href;
+  document.getElementById("idroom").value= ROOM_ID;
   document.querySelector(".link-container").style.display = "block";
 }
 document.querySelector(".closeBtn").onclick = () => {
   document.querySelector(".link-container").style.display = "none";
 }
-
-//adjusting videos
-// function resize()
-
 
 //chatting
 document.querySelector(".chatBox").onclick = () => {

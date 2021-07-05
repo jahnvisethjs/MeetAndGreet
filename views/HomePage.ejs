@@ -14,9 +14,17 @@
             <img src="/meetings.jpg" alt="Meetings" width="500" height="300" style="margin-top: 50px; float: inline">
         </div>
     </div>
+
+    <div class="join">
+    <form method="post" action="/joinMeeting">
+        <input type="text" name="code" style="display: inline; padding: 15px; width: 20%; float:left" placeholder="Enter code.." autocomplete="off"> 
+        <button class="btn btn-lg btn-primary" type="submit" name="joinMeet" style="background-color:#0ecc8d; float:left; width: 20%; padding: 15px">Join</button>
+    </form>
+    </div>
+    <div class="start">
     <form method="post" action="/newMeeting">
         <button class="btn btn-lg btn-primary" type="submit" name="startMeet" style="background-color:#0ecc8d; float:right; width: 20%; padding: 15px">Start New Meeting</button>
     </form>
- 
+    </div>
 </body>
 </html>

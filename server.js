@@ -1,11 +1,13 @@
 //website link: https://tranquil-ridge-38626.herokuapp.com/
-//path for cd: 'C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone'
+
 const express = require("express");
 const app=express();
 const server = require("http").Server(app);
 const io=require("socket.io")(server);
 const { v4: uuidV4 } = require('uuid'); //we need a unique id for evry specific room->will be done by uuid
+const bodyParser=require('body-parser')
 
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs'); //to run our ejs file
@@ -18,6 +20,10 @@ app.post("/newMeeting", (req,res)=>{
     let room_id=uuidV4(); //to get dynamic url everytime
     res.redirect("/" + room_id);
 })
+
+app.post("/joinMeeting", (req,res)=>{
+  res.redirect("/"+ req.body.link);
+});
 
 app.get("/:rooms", function(req,res){
     res.render('rooms', { roomId: req.params.rooms});
@@ -33,8 +39,8 @@ app.post("/MeetingEnded", (req,res)=>{
 
 const allUsers={}
 //whenever we join a room and have a user.. we set up this join room
-io.on('connection', socket => {
 
+io.on('connection', socket => {
     socket.on("new-user", name=>{
       allUsers[socket.id]=name;
       //socket.broadcast.emit("newuser-connected", name);
