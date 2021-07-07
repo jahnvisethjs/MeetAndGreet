@@ -23,7 +23,7 @@ app.post("/newMeeting", (req,res)=>{
 })
 
 app.post("/joinMeeting", (req,res)=>{
-  res.redirect("/"+ req.body.link);
+  res.redirect("/"+ req.body.code);
 });
 
 app.get("/:rooms", function(req,res){
