@@ -195,7 +195,7 @@ const messageForm=document.getElementById("send-container");
 const inputMessage=document.getElementById("msg-input");
 
 
-appendMessage("You joined");
+//appendMessage("You joined");
 socket.emit("new-user", userName);
 
 messageForm.addEventListener("submit", e=>{
@@ -210,6 +210,24 @@ function appendMessage(msg){
   const msgEle= document.createElement('div');
   msgEle.innerText=msg;
   messageContainer.append(msgEle);
+}
+
+//adding emoticons
+document.querySelector(".emoticons").onclick=()=>{
+  if(document.querySelector(".emoji-class").style.display == "none"){
+    document.querySelector(".emoji-class").style.display = "block";
+  }else{
+    document.querySelector(".emoji-class").style.display = "none";
+  }
+}
+var emojiList = document.querySelectorAll('.emojis span');
+emojiList.forEach(function(icon) {
+  icon.addEventListener('click', onClick, false);
+})
+
+function onClick(e) {
+  var emoji = e.currentTarget;
+  inputMessage.value += emoji.innerHTML;
 }
 
 //live captioning functionality
