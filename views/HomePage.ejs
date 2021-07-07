@@ -17,12 +17,14 @@
         </div>
     </div>
 
-    <div class="join">
-    <form method="post" action="/joinMeeting">
-        <input type="text" name="code" style="display: inline; padding: 15px; width: 20%; float:left; margin-left: 30px" placeholder="Enter code.." autocomplete="off"> 
-        <button class="btn btn-lg btn-primary joining" type="submit" name="joinMeet" style="background-color:#0ecc8d; float:left; width: 20%; padding: 15px; cursor: pointer;">Join</button>
+    <form action="/joinMeeting" method="post">
+        <div>
+          <input type="text" id="code" style="display: inline; padding: 15px; width: 20%; float:left; margin-left: 30px" placeholder="Enter code.." autocomplete="off" maxlength="36" required> 
+          <input type="text" value="" style="display: none" class="codeMeeting">
+          <button class="btn btn-lg btn-primary joining" type="submit" name="joinMeet" style="background-color:#0ecc8d; float:left; width: 20%; padding: 15px; cursor: pointer;">Join Session</button>
+        </div>
     </form>
-    </div>
+
     <div class="start">
     <form method="post" action="/newMeeting">
         <button class="btn btn-lg btn-primary" type="submit" name="startMeet" style="background-color:#0ecc8d; float:right; width: 20%; padding: 15px; margin-right: 30px; cursor: pointer;">Start New Meeting</button>

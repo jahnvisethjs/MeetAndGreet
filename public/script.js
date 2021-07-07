@@ -77,6 +77,10 @@ other_peer.on('connection', function(connection){
   conn = connection;
 });
 
+socket.on('redirect', function(dest){
+    window.location.href=dest;
+})
+
 other_peer.on('open', Uid => {
   socket.emit('join-room', ROOM_ID, Uid)
 });
