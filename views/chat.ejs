@@ -13,20 +13,30 @@
     <title>Chat Room</title>
 </head>
 <body style="background-color: #b7a3db;">
+    
     <h1 style="text-align: center;">Chat</h1>
+    <br><br>
+    <img src="/chatting.png" style=" width: 300px; height: 250px">
     <div class="start">
     <form method="post" action="/newMeeting">
-        <button class="btn btn-lg btn-primary startMeet" type="submit" style="background-color:#0ecc8d; float:left; width: 20%; padding: 15px; margin-left: 30px;cursor: pointer;">Start Meeting</button>
+      <button class="btn btn-lg btn-primary startMeet" type="submit" style="background-color:#0ecc8d; float:left; width: 150px; padding: 15px; margin-left: 30px;cursor: pointer; position: absolute; top: 500px; left: 400px">Start Meeting</button>    
+    </form>
+
+    <form method="post" action="/MeetingEnded">
+      <button class="btn primary endMeet" type="submit" style="background-color:#0ecc8d;width: 150px; padding: 15px; margin-left: 20px; cursor: pointer;position: absolute; top: 500px; left: 600px">End Meeting</button>
     </form>
     </div>
     <br><br><br>
-    <div class="end">
-        <form method="post" action="/MeetingEnded">
-            <button class="btn btn-lg btn-primary endMeet" type="submit" style="background-color:#0ecc8d; float:left; width: 20%; padding: 15px; margin-left: 30px; cursor: pointer;">End Session</button>
-        </form>
-    </div>
+    <form action="/joinMeeting" method="post">
+        <div class="input-group mb-3">
+            <input type="text" name="code" style="display: inline; padding: 15px; width: 15%; float:left; margin-left: 30px;  position: absolute; top: 500px" placeholder="Enter code.." autocomplete="off" maxlength="36" required> 
+            <input type="text" value="" style="display: none" class="codeMeeting">
+          <button class="btn btn-lg btn-primary joining" type="submit" name="joinMeet" style="background-color:#0ecc8d; margin-left: 200px; width: 170px; padding: 15px; cursor: pointer; position: absolute; top: 500px">Join Meeting via code</button>
+        </div>
+      </form>
+      <br><br>
    
-    <div class="card text-container">
+    <div class="card text-container" style="position: absolute; top: 100px; right: 50px">
         <div class="card-header" style="background-color: rgb(18, 209, 243);">
           <h3 class="card-title" style="display: inline; color: black; text-align: center; margin-left: 80px">Chat</h3>
         </div>
