@@ -11,14 +11,14 @@ const other_peer = new Peer(undefined, {
   debug: 1
 });
 
+
+
 const myVideo = document.createElement("video")
 myVideo.muted = true; //video playback is muted for us.. we don't want to listen to ourselves
 
 let running_stream, conn;
 let allPeers = {}
 let userName;
-let people_in_room=[];
-let i=0;
 
 do{
   userName = prompt("Please enter your name: ");
@@ -31,13 +31,13 @@ navigator.mediaDevices.getUserMedia({
 }).then((stream) => {
   
   running_stream=stream;
-  addVideoStream(myVideo, stream)
+  addVideoStream(myVideo, stream);
 
   other_peer.on('call', call => {
     call.answer(stream); //to answer and get user video stream on our side
 
     //to give our video to user
-    const video = document.createElement('video')
+    const video = document.createElement('video');
     call.on('stream', userVideoStream => {
       addVideoStream(video, userVideoStream)
     })
@@ -58,7 +58,6 @@ navigator.mediaDevices.getUserMedia({
   socket.emit("new-user", userName);
 
   socket.on("chat-msg", data=>{
-    //console.log(`${data.name}`)
     appendMessage(`${data.name}: ${data.message}`);
   });
 
@@ -81,14 +80,12 @@ socket.on('redirect', function(dest){
     window.location.href=dest;
 })
 
-other_peer.on('open', Uid => {
-  socket.emit('join-room', ROOM_ID, Uid)
+other_peer.on('open', userid => {
+  socket.emit('join-room', ROOM_ID, userid)
 });
 
 
 function connectToNewUser(userId, stream) {
-  people_in_room[i]=userId;
-  i=i+1;
   const call = other_peer.call(userId, stream)//calling user and sending our video and audio stream
   const video = document.createElement('video')
   call.on('stream', userVideoStream => { //userVideoStream is other person's video
@@ -109,7 +106,7 @@ function addVideoStream(video, stream) {
     video.play()
   })
   video_grid.append(video)
-  //resize();
+  
 }
 
 //mic button function
@@ -140,7 +137,7 @@ document.querySelector(".microphone").onclick= () =>{
 
 //camera button function
 document.querySelector(".camera").onclick= () =>{
-  let videoAt=running_stream.getVideoTracks()[0];
+  let videoAt= running_stream.getVideoTracks()[0];
   let camera_class=document.querySelector(".camera");
   let cam_btn_select=document.querySelector(".cam-btn");
 
@@ -198,8 +195,6 @@ const messageContainer=document.querySelector(".message-container");
 const messageForm=document.getElementById("send-container");
 const inputMessage=document.getElementById("msg-input");
 
-
-//appendMessage("You joined");
 socket.emit("new-user", userName);
 
 messageForm.addEventListener("submit", e=>{
@@ -207,7 +202,7 @@ messageForm.addEventListener("submit", e=>{
   const message = inputMessage.value;
   appendMessage(`You: ${message}`);
   socket.emit("send-chat-message", message); //send info from client to server
-  inputMessage.value="";
+  inputMessage.value=""; //reset value to empty
 })
 
 function appendMessage(msg){
@@ -218,11 +213,11 @@ function appendMessage(msg){
 
 //adding emoticons
 document.querySelector(".emoticons").onclick=()=>{
-  if(document.querySelector(".emoji-class").style.display == "none"){
+  if(document.querySelector(".emoji-class").style.display == "none")
     document.querySelector(".emoji-class").style.display = "block";
-  }else{
+  else
     document.querySelector(".emoji-class").style.display = "none";
-  }
+  
 }
 var emojiList = document.querySelectorAll('.emojis span');
 emojiList.forEach(function(icon) {
@@ -233,13 +228,3 @@ function onClick(e) {
   var emoji = e.currentTarget;
   inputMessage.value += emoji.innerHTML;
 }
-
-//live captioning functionality
-// document.querySelector(".caption").onclick = () => {
-//   document.querySelector(".caption-container").style.display = "block";
-//   document.querySelector(".cptnBtn").innerHTML="subtitles";
-// }
-// document.querySelector(".closeCaption").onclick = () => {
-//   document.querySelector(".caption-container").style.display = "none";
-//   document.querySelector(".cptnBtn").innerHTML="subtitles_off";
-// }

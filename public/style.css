@@ -91,8 +91,10 @@ video {
 }
 .link-container{
   position: absolute;
-  top: 80%;
-  left: 68%;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
   background-color: #22f2ef;
 }
 
@@ -103,4 +105,25 @@ video {
   font-size: 0.7em;
   background-color: "#07e3f2";
   
+}
+
+.text-container{
+  width: 20rem; 
+  display: block; 
+  background-color: rgb(18, 209, 243); 
+  float: right; 
+  margin-right: 30px;
+}
+
+#msg{
+  margin-top: 20px; 
+  margin-bottom:15px; 
+  margin-left: 4px
+}
+
+#send-btn{
+  cursor:pointer;
+  float: right;
+  margin-top: 12px; 
+  margin-right:30px
 }
