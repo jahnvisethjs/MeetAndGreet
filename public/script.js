@@ -183,6 +183,7 @@ document.querySelector(".closeBtn").onclick = () => {
   document.querySelector(".link-container").style.display = "none";
 }
 
+
 //chatting
 document.querySelector(".chatBox").onclick = () => {
   document.querySelector(".message-container").style.display = "block";
@@ -228,3 +229,5 @@ function onClick(e) {
   var emoji = e.currentTarget;
   inputMessage.value += emoji.innerHTML;
 }
+
+

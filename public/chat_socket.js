@@ -34,3 +34,4 @@ function appendMessage(data){
     element.innerText=data;
     messageContainer.append(element);
 }
+document.getElementById("chat-link").setAttribute("value", window.location.href);

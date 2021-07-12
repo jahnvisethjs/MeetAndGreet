@@ -10,20 +10,24 @@
 
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    
     <title>Chat Room</title>
 </head>
+
 <body style="background-color: #b7a3db;">
     
     <h1 style="text-align: center;">Chat</h1>
     <br><br>
-    <img src="/chatting.png" style=" width: 300px; height: 250px">
+    <h4 style= "position: absolute; top: 60px">Share Chat Room link: </h4>
+    <input id="chat-link" disabled style="position: absolute; top: 110px; height: 20px; width: 260px;">  
+    
     <div class="start">
     <form method="post" action="/newMeeting">
-      <button class="btn btn-lg btn-primary startMeet" type="submit" style="background-color:#0ecc8d; float:left; width: 150px; padding: 15px; margin-left: 30px;cursor: pointer; position: absolute; top: 500px; left: 400px">Start Meeting</button>    
+      <button class="btn btn-lg btn-primary startMeet" type="submit" style="background-color:#0ecc8d; float:left; width: 150px; padding: 15px; margin-left: 30px;cursor: pointer; position: absolute; top: 500px; left: 350px">Start Meeting</button>    
     </form>
 
     <form method="post" action="/MeetingEnded">
-      <button class="btn primary endMeet" type="submit" style="background-color:#0ecc8d;width: 150px; padding: 15px; margin-left: 20px; cursor: pointer;position: absolute; top: 500px; left: 600px">End Meeting</button>
+      <button class="btn primary endMeet" type="submit" style="background-color:#0ecc8d;width: 150px; padding: 15px; margin-left: 20px; cursor: pointer;position: absolute; top: 500px; left: 510px">End Meeting</button>
     </form>
     </div>
     <br><br><br>
@@ -36,7 +40,7 @@
       </form>
       <br><br>
    
-    <div class="card text-container" style="position: absolute; top: 100px; right: 50px">
+    <div class="card text-container" style="position: absolute; top: 40px; right: 30px">
         <div class="card-header" style="background-color: rgb(18, 209, 243);">
           <h3 class="card-title" style="display: inline; color: black; text-align: center; margin-left: 80px">Chat</h3>
         </div>

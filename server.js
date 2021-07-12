@@ -30,7 +30,7 @@ app.post("/chatRoom", (req,res)=>{
 })
 
 app.get("/chatRoom/:id", (req,res)=>{
-  res.render("chat");
+  res.render("chat", {chatID: req.params.chat});
 })
 
 app.post("/newMeeting", (req,res)=>{
