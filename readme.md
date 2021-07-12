@@ -1,4 +1,4 @@
-#Microsoft Teams Clone - Meet and Greet
+#Microsoft Teams Clone-Meet and Greet
 
 This is a meeting web application which is built under Microsoft Engage Mentorship Program. The challenge was to build a MS teams clone and solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using the product to have a video conversation.
 
@@ -14,20 +14,20 @@ My solution has following functionalities where participants can:
 *can leave from a meeting
 
 ##Screenshots
-![HomePage](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\homepage.png)
+![HomePage](public\screenshots\homepage.png)
 
-![NameScreen](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\enterName.png)
+![NameScreen](public\screenshots\enterName.png)
 
-![ChatRoom](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\ChatRoom.png)
+![ChatRoom](public\screenshots\ChatRoom.png)
 ###Known Bugs
 
-![InMeeting](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\meetingScreen.png)
+![InMeeting](public\screenshots\meetingScreen.png)
 
-![ShareLink](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\shareLink.png)
+![ShareLink](public\screenshots\shareLink.png)
 
-![InChat](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\chatIn.png)
+![InChat](public\screenshots\chatIn.png)
 
-![EndPage](C:\Users\USER\Desktop\Jahnvi\Web_Dev\Teams_Clone\public\screenshots\endPage.png)
+![EndPage](public\screenshots\endPage.png)
 
 
 ###Known Bugs
