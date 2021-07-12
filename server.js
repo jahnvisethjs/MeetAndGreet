@@ -51,7 +51,7 @@ app.post("/EndingPage", function(req,res){
 });
 
 app.post("/MeetingEnded", function(req,res){
-    res.render("Homepage");
+    res.redirect("/");
 });
 
 const chatUsers={};
@@ -103,7 +103,7 @@ io.of("/").on('connection', socket => {
 
 })
 server.listen(process.env.PORT || 3001, function(req, res){
-    console.log("Server is listening on port 3000...");
+    console.log("Server is listening on port 3001...");
 });
 
 
