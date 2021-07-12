@@ -3,16 +3,14 @@
 This is a meeting web application which is built under Microsoft Engage Mentorship Program. The challenge was to build a MS teams clone and solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using the product to have a video conversation.
 
 
-My solution has following functionalities where participants can:
-* an interact with each other on a video call
-* can mute/unmute themselves
-* can switch on/off their camera
-* can share meeting id or link with others to join
-* can join meeting via link/code or start instant meeting
-* can have a chat in meeting
-* can have a chat before meeting
-* can have a chat after meeting
-* can leave from a meeting
+My solution has following functionalities:
+* ###### Video Call- can interact with each other on a video call
+* ###### Mute/Unmute- can sswitch on/off their audio
+* ###### Camera On/Off- can switch on/off their camera
+* ###### Share Link- can share meeting id or link with others to join 
+* ###### Join/Start Meeting- can join meeting via link/code or start instant meeting
+* ###### Chat- can have a chat in meeting, before or after the meeting
+* ###### End Call- can leave from a meeting
 
 ## Screenshots
 #### HomePage
@@ -36,6 +34,29 @@ My solution has following functionalities where participants can:
 <img src="public\screenshots\endPage.png" alt="end screen">
 
 
-### Known Bugs
+## Tech Stack:
+
+#### Front-end technologies:
+
+* EJS
+* HTML
+* CSS
+* JavaScript
+
+#### Back-end technologies
+
+* Node.js
+* Express.js
+
+#### Hostng platform
+
+* Heroku
+
+#### Other
+
+* Socket.io (for real time communication)
+* PeerJS (for peer to peer video calling)
+
+## Known Bugs
 * Video freeze issue-> if a person leaves the meeting, then their video freezes sometimes for the rest of the users
 * If a person is connected through a mobile phone, if they go to a new room and come back, their video freezes
