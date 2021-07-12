@@ -12,12 +12,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 const peerServer= PeerServer({
   debug: true,
   path: "/myapp",
-  port: 9000
+  port: 9001
 })
 app.use(express.static("public"));
 app.set('view engine', 'ejs'); //to run our ejs file
 app.use("/peerjs", peerServer);
-
 
 
 app.get("/", (req,res)=>{
@@ -30,7 +29,7 @@ app.post("/chatRoom", (req,res)=>{
 })
 
 app.get("/chatRoom/:id", (req,res)=>{
-  res.render("chat", {chatID: req.params.chat});
+  res.render("chat");
 })
 
 app.post("/newMeeting", (req,res)=>{
@@ -51,7 +50,7 @@ app.post("/EndingPage", function(req,res){
   res.sendFile(__dirname+"/EndingPage.html")
 });
 
-app.post("/MeetingEnded", (req,res)=>{
+app.post("/MeetingEnded", function(req,res){
     res.render("Homepage");
 });
 
@@ -103,7 +102,7 @@ io.of("/").on('connection', socket => {
   })
 
 })
-server.listen(process.env.PORT || 3000, function(req, res){
+server.listen(process.env.PORT || 3001, function(req, res){
     console.log("Server is listening on port 3000...");
 });
 
