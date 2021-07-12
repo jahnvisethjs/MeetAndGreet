@@ -1,6 +1,7 @@
-# Microsoft Teams Clone-Meet and Greet
+# Microsoft Teams Clone- Meet and Greet
 
 This is a meeting web application which is built under Microsoft Engage Mentorship Program. The challenge was to build a MS teams clone and solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using the product to have a video conversation.
+
 
 My solution has following functionalities where participants can:
 * an interact with each other on a video call
@@ -14,19 +15,25 @@ My solution has following functionalities where participants can:
 * can leave from a meeting
 
 ## Screenshots
-! [HomePage](public\screenshots\homepage.png)
+#### HomePage
+<img src="public\screenshots\homepage.png" alt="Homepage">
 
-! [NameScreen](public\screenshots\enterName.png)
+<img src="public\screenshots\enterName.png">
 
-! [ChatRoom](public\screenshots\ChatRoom.png)
+#### Chat Room
+<img src="public\screenshots\ChatRoom.png" alt="chatRoom">
 
-! [InMeeting](public\screenshots\meetingScreen.png)
+#### Meeting Screen
+<img src="public\screenshots\meetingScreen.png" alt="meetingScreen">
 
-! [ShareLink](public\screenshots\shareLink.png)
+#### Share link
+<img src="public\screenshots\shareLink.png" alt="share link">
 
-! [InChat](public\screenshots\chatIn.png)
+#### Chat in meeting
+<img src="public\screenshots\chatIn.png">
 
-! [EndPage](public\screenshots\endPage.png)
+#### EndPage
+<img src="public\screenshots\endPage.png" alt="end screen">
 
 
 ### Known Bugs
