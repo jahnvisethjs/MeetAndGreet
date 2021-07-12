@@ -1,8 +1,10 @@
 # Microsoft Teams Clone- Meet and Greet
 
-This is a meeting web application which is built under Microsoft Engage Mentorship Program. The challenge was to build a MS teams clone and solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using the product to have a video conversation.
+Meet and Greet is a meeting web application which is built as a project under Microsoft Engage Mentorship Program. The challenge was to build a MS teams clone and solution should be a fully functional prototype with at least one mandatory functionality - a minimum of two participants should be able connect with each other using the product to have a video conversation.
 
+Try it here: (https://videomeetgreet.herokuapp.com/)
 
+--------------------------------------------------------------------------------------------------------------------------------------
 My solution has following functionalities:
 * ###### Video Call- can interact with each other on a video call
 * ###### Mute/Unmute- can sswitch on/off their audio
@@ -11,6 +13,8 @@ My solution has following functionalities:
 * ###### Join/Start Meeting- can join meeting via link/code or start instant meeting
 * ###### Chat- can have a chat in meeting, before or after the meeting
 * ###### End Call- can leave from a meeting
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Screenshots
 #### HomePage
@@ -33,6 +37,7 @@ My solution has following functionalities:
 #### EndPage
 <img src="public\screenshots\endPage.png" alt="end screen">
 
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Tech Stack:
 
@@ -56,6 +61,8 @@ My solution has following functionalities:
 
 * Socket.io (for real time communication)
 * PeerJS (for peer to peer video calling)
+
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Known Bugs
 * Video freeze issue-> if a person leaves the meeting, then their video freezes sometimes for the rest of the users
