@@ -7,7 +7,7 @@ Try it here: (https://videomeetgreet.herokuapp.com/)
 --------------------------------------------------------------------------------------------------------------------------------------
 My solution has following functionalities:
 * ###### Video Call- can interact with each other on a video call
-* ###### Mute/Unmute- can sswitch on/off their audio
+* ###### Mute/Unmute- can switch on/off their audio
 * ###### Camera On/Off- can switch on/off their camera
 * ###### Share Link- can share meeting id or link with others to join 
 * ###### Join/Start Meeting- can join meeting via link/code or start instant meeting
